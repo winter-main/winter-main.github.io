@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>带排序功能的js masonry瀑布流插件</title>
+<link rel="stylesheet" href="./css/main.css">
+<link rel="stylesheet" href="./dist/sortable.min.css">
+<script type="text/javascript" src="./dist/sortable.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.10.0/jquery.js"></script>
+</head>
+<body>
+<main class="sortable">
+<div class="container">
+  <div class="wrapper">
+    <ul class="sortable__nav nav" id="sortable_nav">
+      <li> <a data-sjslink="all" class="nav__link"> 全部 </a> </li>
+      <li> <a data-sjslink="flatty" class="nav__link"> 扁平的 </a> </li>
+      <li> <a data-sjslink="funny" class="nav__link"> 有趣的 </a> </li>
+    </ul>
+    <div id="sortable" class="sjs-default">
+      <div data-sjsel="flatty">
+        <a href="https://www.baidu.com" target="_blank" >
+        <div class="card">  <img class="card__picture" src="./images/item-1.png" alt="">
+          <div class="card-infos">
+            <h2 class="card__title">Example 1</h2>
+            <p class="card__text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, eius, asperiores. Incidunt sapiente est quae iure... </p>
+          </div>
+        </div>
+        </a>
+      </div>
+      <div data-sjsel="flatty">
+        <div class="card"> <img class="card__picture" src="./images/item-2.png" alt="">
+          <div class="card-infos">
+            <h2 class="card__title">Example 2</h2>
+            <p class="card__text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum vitae necessitatibus, dolorem similique vero explicabo... </p>
+          </div>
+        </div>
+      </div>
+      <div data-sjsel="funny">
+        <div class="card"> <img class="card__picture" src="./images/item-3.png" alt="">
+          <div class="card-infos">
+            <h2 class="card__title">Example 3</h2>
+            <p class="card__text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, placeat voluptate, fuga tenetur eos ducimus animi porro... </p>
+          </div>
+        </div>
+      </div>
+      <div data-sjsel="flatty">
+        <div class="card"> <img class="card__picture" src="./images/item-4.png" alt="">
+          <div class="card-infos">
+            <h2 class="card__title">Example 4</h2>
+            <p class="card__text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit doloremque quisquam, obcaecati unde nam est quos... </p>
+          </div>
+        </div>
+      </div>
+      <div data-sjsel="flatty">
+        <div class="card"> <img class="card__picture" src="./images/item-5.png" alt="">
+          <div class="card-infos">
+            <h2 class="card__title">Example 5</h2>
+            <p class="card__text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse corporis hic minima nisi reprehenderit... </p>
+          </div>
+        </div>
+      </div>
+      <div data-sjsel="funny">
+        <div class="card"> <img class="card__picture" src="./images/item-6.png" alt="">
+          <div class="card-infos">
+            <h2 class="card__title">Example 6</h2>
+            <p class="card__text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel voluptatibus, id, deserunt inventore... </p>
+          </div>
+        </div>
+      </div>
+      <div data-sjsel="flatty">
+        <div class="card"> <img class="card__picture" src="./images/item-7.png" alt="">
+          <div class="card-infos">
+            <h2 class="card__title">Example 7</h2>
+            <p class="card__text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum enim beatae vero culpa, fuga, magni sunt dolores nam... </p>
+          </div>
+        </div>
+      </div>
+      <div data-sjsel="flatty">
+        <div class="card"> <img class="card__picture" src="./images/item-8.png" alt="">
+          <div class="card-infos">
+            <h2 class="card__title">Example 8</h2>
+            <p class="card__text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae numquam, blanditiis necessitatibus... </p>
+          </div>
+        </div>
+      </div>
+      <div data-sjsel="funny">
+        <div class="card"> <img class="card__picture" src="./images/item-9.png" alt="">
+          <div class="card-infos">
+            <h2 class="card__title">Example 9</h2>
+            <p class="card__text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur adipisci voluptatum laborum officiis... </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script type="text/javascript">
+      
+        $(document).ready(function(){
+            $.getJSON("./data/data.json", function(result){
+                $.each(result, function(i, field){
+                  if("tabs" == i) {
+                    console.log("tabs");
+                    console.log(field);
+                    var tabs = "";
+                    $.each(field, function(j, item){
+                      console.log(j)
+                      console.log(item)
+                       tabs += '<li> <a data-sjslink="' + item.type + '" class="nav__link"> ' + item.title + ' </a> </li>'
+                    });
+                    $("#sortable_nav").html(tabs)
+                  } else if ("datas" == i) {
+                    console.log("datas");
+                    console.log(field);
+                    var datas = "";
+                    
+                    $.each(field, function(k, item){
+                      datas += '<div data-sjsel="' + item.data_sjsel + '">';
+                      datas += '<a href="' + item.target_url + '" target="_blank" >';
+                      datas += '<div class="card"> <img class="card__picture" src="' + item.card_picture + '" alt="">';
+                      datas += '<div class="card-infos">';
+                      datas += '<h2 class="card__title">' + item.card_title + '</h2>';
+                      datas += '<p class="card__text"> ' + item.card_text + ' </p>';
+                      datas += '</div>';
+                      datas += '</div>';
+                      datas += '</a>';
+                      datas += '</div>';
+                    });
+                    $("#sortable").html(datas);
+                  }
+                }); 
+              });
+        });
+        document.querySelector('#sortable').sortablejs()
+	  </script>
+</body>
+</html>
