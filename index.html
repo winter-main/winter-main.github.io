@@ -30,18 +30,12 @@
             $.getJSON("./data/data.json", function(result){
                 $.each(result, function(i, field){
                   if("tabs" == i) {
-                    console.log("tabs");
-                    console.log(field);
                     var tabs = "";
                     $.each(field, function(j, item){
-                      console.log(j)
-                      console.log(item)
                        tabs += '<li> <a data-sjslink="' + item.type + '" class="nav__link"> ' + item.title + ' </a> </li>'
                     });
                     $("#sortable_nav").html(tabs)
                   } else if ("datas" == i) {
-                    console.log("datas");
-                    console.log(field);
                     var datas = "";
                     
                     $.each(field, function(k, item){
