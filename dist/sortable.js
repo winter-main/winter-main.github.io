@@ -98,12 +98,12 @@ class Sortable {
 
     this._setBlocWidth()
 
-    window.addEventListener('load', () => {
+    //window.addEventListener('load', () => {
       this._filterElements(()=>{
         this.orderelements()
       })
       parent.style.opacity = 1
-    })
+    //})
 
     this.resize()
   }
