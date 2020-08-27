@@ -98,8 +98,7 @@ class Sortable {
 
     this._setBlocWidth()
 
-    window.addEventListener('load', () => {
-      this._filterElements(()=>{
+    $(function () { this._filterElements(()=>{
         this.orderelements()
       })
       parent.style.opacity = 1
