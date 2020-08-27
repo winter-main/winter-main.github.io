@@ -10,6 +10,22 @@
 <link rel="stylesheet" href="./dist/sortable.css">
 <script type="text/javascript" src="./dist/sortable.js"></script>
 <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.10.0/jquery.js"></script>
+
+</head>
+<body>
+<main class="sortable">
+<div class="container">
+  <div class="wrapper">
+    <ul class="sortable__nav nav" id="sortable_nav">
+      
+    </ul>
+    <div id="sortable" class="sjs-default">
+     
+    </div>
+  </div>
+</div>
+</div>
+</body>
 <script type="text/javascript">
 $(document).ready(function(){
     $.getJSON("./data/data.json", function(result){
@@ -42,19 +58,4 @@ $(document).ready(function(){
       });
 });
 </script>
-</head>
-<body>
-<main class="sortable">
-<div class="container">
-  <div class="wrapper">
-    <ul class="sortable__nav nav" id="sortable_nav">
-      
-    </ul>
-    <div id="sortable" class="sjs-default">
-     
-    </div>
-  </div>
-</div>
-</div>
-</body>
 </html>
